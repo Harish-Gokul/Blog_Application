@@ -1,0 +1,21 @@
+<div>
+  <h1>Welcome to Article management application</h1>
+  <h5><%=@articles.class %></h5>
+</div>
+<table>
+  <thead>
+  <th>Id</th>
+  <th>Title</th>
+  <th>Action</th>
+  </thead>
+  <tbody>
+  <% for element in @articles %>
+    <tr>
+      <td><%= element.id %></td>
+      <td><%= element.title %></td>
+       <td> <a href="/articles/<%= element.id %>">show</a></td>
+  </tr>
+  <%end %>
+
+  </tbody>
+</table>
