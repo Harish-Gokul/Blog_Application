@@ -21,3 +21,7 @@ div{
     text-align: center;
 }
 
+.article_table{
+    border: 2px solid  black;
+    margin: 0% 20%;
+}
