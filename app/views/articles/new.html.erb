@@ -1,0 +1,10 @@
+<h1>Create new article</h1>
+<%= form_with url: "/articles", method: :post do |form| %>
+ <%= form.label :title %> <br>
+ <%= form.text_field :title %>
+  <br>
+  <%= form.label :description %><br>
+  <%= form.text_area :description %>
+  <br>
+  <%= form.submit %>
+<% end %>
