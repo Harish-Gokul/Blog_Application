@@ -25,9 +25,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
+
     @article = Article.find(params[:id])
-    @article = Article.update(params.require(:article).permit(:title,:description))
-    if @article.save
+    if @article.update(params.require(:article).permit(:title,:description))
       flash[:notice]  = "Article has been edited successfully"
       redirect_to article_path
     else
@@ -35,8 +35,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def delete
-
+  def destroy
+     @article = Article.find(params[:id])
+     @article.destroy
+     redirect_to articles_path
   end
 
 end

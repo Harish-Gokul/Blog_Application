@@ -4,4 +4,6 @@
   <h4>Description</h4>
   <p><%= @article.description %></p>
   <a href="/articles">Back to index</a>
+  <br>
+  <%= link_to "edit", edit_article_path(@article) %>
 </div>
