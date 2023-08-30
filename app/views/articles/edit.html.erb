@@ -1,13 +1,14 @@
-<h1>Create new article</h1>
+<h1>Edit article</h1>
 <% if @article.errors.any? %>
   <h4>Some issue in saving your article</h4>
   <% for mesg in @article.errors.full_messages %>
-       <li><%= mesg %></li>
+    <li><%= mesg %></li>
   <% end %>
-  <%end %>
-<%= form_with scope:  :article,url: articles_path, method: :post do |form| %>
- <%= form.label :title %> <br>
- <%= form.text_field :title %>
+<%end %>
+
+<%= form_with(model: @article, local: true) do |form| %>
+  <%= form.label :title %> <br>
+  <%= form.text_field :title %>
   <br>
   <%= form.label :description %><br>
   <%= form.text_area :description %>
