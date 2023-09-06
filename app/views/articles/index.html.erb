@@ -1,7 +1,7 @@
 <div class="center_div">
   <br>
   <button onclick="window.open('/articles/new','_self')" class="btn btn-primary">New Article</button>
-  <br>
+
 </div>
 
 <div class="article_table">
@@ -9,6 +9,10 @@
 <div class="card" style="width: 28rem;margin-top:10px ">
   <div class="card-header">
     <h5 class="card-title" style="font-weight: bolder;text-align: center"><%= element.title %></h5>
+    <hr>
+    <div class="center_div text-success" >
+      <small >Created by <%= element.user.username %></small>
+    </div>
   </div>
   <div class="card-body">
 

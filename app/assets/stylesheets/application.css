@@ -27,7 +27,7 @@ body{
     justify-content: center;
     align-items: center;
     overflow: auto;
-
+    margin: 2% 0;
 }
 
 .form_div{
