@@ -1,26 +1,27 @@
-<div>
-  <h1>Welcome to Article management application</h1>
+<div class="center_div">
+  <br>
   <button onclick="window.open('/articles/new','_self')" class="btn btn-primary">New Article</button>
+  <br>
 </div>
-<div class="article_table">
-<table class="table table-hover">
-  <thead class="thead-dark " >
-  <th>Id</th>
-  <th>Title</th>
-  <th colspan="3">Action</th>
-  </thead>
-  <tbody>
-  <% for element in @articles %>
-    <tr>
-      <td><%= element.id %></td>
-      <td><%= element.title %></td>
-       <td> <%= link_to "Show", article_path(element) %></td>
-       <td> <%= link_to "Edit", edit_article_path(element) %></td>
-       <td> <%= link_to "Delete", article_path(element.id), method: :delete %></td>
-  </tr>
-  <%end %>
 
-  </tbody>
-</table>
+<div class="article_table">
+  <% for element in @articles %>
+<div class="card" style="width: 28rem;margin-top:10px ">
+  <div class="card-header">
+    <h5 class="card-title" style="font-weight: bolder;text-align: center"><%= element.title %></h5>
+  </div>
+  <div class="card-body">
+
+    <p class="card-text"><%= element.description %></p>
+  </div>
+  <div class="card-header center_div">
+    <button class="btn btn-outline-primary"> <%= link_to "Show",article_path(element),{style: "text-decoration: none;color: inherit",class: "card-link"} %></button>
+    <button class="btn btn-outline-warning"> <%= link_to "Edit",edit_article_path(element),{style: "text-decoration: none;color: inherit",class: "card-link"} %></button>
+    <button class="btn btn-outline-danger"> <%= link_to "Delete",article_path(element), {style: "text-decoration: none;color: inherit",class: "card-link",method: :delete } %></button>
+
+  </div>
+</div>
+
+  <%end %>
 
 </div>
