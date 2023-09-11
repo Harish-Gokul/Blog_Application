@@ -22,12 +22,17 @@ body{
 }
 
 .article_table{
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: auto;
-    margin: 2% 0;
+    margin: 2% 15%;
+    background-color: palegoldenrod;
+    border-radius: 15px;
+    height: 70vh;
+
+
 }
 
 .form_div{
