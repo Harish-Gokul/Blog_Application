@@ -11,7 +11,7 @@
     <h5 class="card-title" style="font-weight: bolder;text-align: center"><%= element.title %></h5>
     <hr>
     <div class="center_div text-success" >
-      <small >Created by <%= element.user.username %></small>
+      <small >Created by  <%= element.user.username if element.user %></small>
     </div>
   </div>
   <div class="card-body">

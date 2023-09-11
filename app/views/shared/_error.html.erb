@@ -1,0 +1,15 @@
+<% if obj.errors.any? %>
+
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h4>Some issue in saving your article</h4>
+    <hr>
+    <% for mesg in obj.errors.full_messages %>
+      <li><%= mesg %></li>
+
+    <% end %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+<%end %>

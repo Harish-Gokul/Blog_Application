@@ -1,18 +1,4 @@
-<% if @article.errors.any? %>
-
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <h4>Some issue in saving your article</h4>
-    <hr>
-    <% for mesg in @article.errors.full_messages %>
-      <li><%= mesg %></li>
-
-    <% end %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-
-<%end %>
+<%= render "shared/error", obj: @article %>>
 <br>
 
 <div class="form_div">
