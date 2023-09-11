@@ -2,6 +2,13 @@
 <h2>All Bloggers</h2>
 </div>
 
+<div class="paginate">
+    <div class="flickr_pagination" >
+      <%= will_paginate @users %>
+    </div>
+</div>
+
+
 <div class="users_container">
   <% @users.each do |user| %>
   <div class="card text-center">

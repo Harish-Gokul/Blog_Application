@@ -76,3 +76,7 @@ body{
 .edit_user_container > *{
     margin: 1% 0%;
 }
+.paginate{
+    display: flex;
+    justify-content: center;
+}

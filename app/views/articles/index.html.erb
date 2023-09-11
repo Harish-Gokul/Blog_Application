@@ -1,7 +1,11 @@
 <div class="center_div">
   <br>
-  <button onclick="window.open('/articles/new','_self')" class="btn btn-primary">New Article</button>
+  <h2>Listing all articles</h2>
 
 </div>
-
+<div class="paginate">
+  <div class="flickr_pagination" >
+    <%= will_paginate @users %>
+  </div>
+</div>
 <%= render "articles" %>
