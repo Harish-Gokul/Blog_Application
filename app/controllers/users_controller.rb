@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
   def show
     @user = User.find(params[:id])
     @articles = @user.articles
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Successfully updated user details"
-      redirect_to articles_path
+      redirect_to @user
     else
       render "edit"
     end

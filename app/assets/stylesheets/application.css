@@ -30,7 +30,7 @@ body{
     margin: 2% 15%;
     background-color: palegoldenrod;
     border-radius: 15px;
-    height: 70vh;
+
 
 
 }
@@ -64,5 +64,15 @@ body{
     border: 2px solid black;
     border-radius: 5px;
     text-align: center;
+}
 
+.users_container{
+    margin: 2% 15%;
+}
+.edit_user_container{
+    text-align: center;
+    padding: 15px;
+}
+.edit_user_container > *{
+    margin: 1% 0%;
 }

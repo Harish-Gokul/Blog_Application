@@ -8,7 +8,7 @@
         <h5  style="font-weight: bolder;text-align: center">Description</h5>
         <hr>
         <div class="center_div text-success" >
-          <small >Created by <%= @article.user.username if @article.user %></small>
+          <small >Created by <%= (link_to @article.user.username,user_path(@article.user.id)) if @article.user %></small>
         </div>
       </div>
       <div class="card-body">

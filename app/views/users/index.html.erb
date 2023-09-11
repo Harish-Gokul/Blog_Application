@@ -1,0 +1,23 @@
+<div class="center_div">
+<h2>All Bloggers</h2>
+</div>
+
+<div class="users_container">
+  <% @users.each do |user| %>
+  <div class="card text-center">
+    <div class="card-header">
+        <span class="text-primary" style="font-weight: bolder"><%= link_to user.username, user_path(user) %></span>
+    </div>
+    <div class="card-body">
+        <%= pluralize(user.articles.count,"Article") %>
+      <br>
+      <%= link_to "View Profile", user_path(user),class: "btn btn-outline-success" %>
+      <%= link_to "Edit Profile", edit_user_path(user),class: "btn btn-outline-primary" %>
+    </div>
+    <div class="card-footer text-muted">
+      Joined <%= time_ago_in_words(user.created_at) %>
+    </div>
+  </div>
+    <br>
+<% end %>
+</div>

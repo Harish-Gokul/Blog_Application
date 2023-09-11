@@ -1,7 +1,9 @@
-<div class="center_div">
+<div class="edit_user_container">
   <h3>Welcome Back <span class="text-success"> <%= @user.username %></span></h3>
-  <br>
-  <h4>Listing all articles that gave been crated by you</h4>
+
+  <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-primary" %>
+
+  <h4>Listing all articles that you have created</h4>
 </div>
 
 <%= render "articles/articles" %>

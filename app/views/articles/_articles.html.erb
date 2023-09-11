@@ -4,10 +4,10 @@
   <% for element in @articles %>
     <div class="card" style="width: 28rem;margin-top:10px ">
       <div class="card-header">
-        <h5 class="card-title" style="font-weight: bolder;text-align: center"><%= element.title %></h5>
+        <h5 class="card-title " style="font-weight: bolder;text-align: center"><%= link_to element.title,article_path(element) %></h5>
         <hr>
-        <div class="center_div text-success" >
-          <small >Created by  <%= element.user.username if element.user %></small>
+        <div class="center_div" >
+          <small >Created by  <%= (link_to element.user.username,user_path(element.user.id)) if element.user %></small>
         </div>
       </div>
       <div class="card-body">
