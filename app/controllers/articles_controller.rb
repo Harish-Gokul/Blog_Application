@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :get_article, only: [:show,:update,:edit,:destroy]
+  before_action :require_user, except: [:show,:index]
   def show
   end
 
@@ -22,6 +23,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    if @article.user.id != current_user.id
+      flash[:alert] = "Sorry you cannot edit others article"
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
@@ -45,5 +50,12 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title,:description)
+  end
+  
+  def require_user
+    if !logged_in?
+      flash[:alert] = "You haven't logged in please login to perform the action"
+      redirect_to login_path
+    end
   end
 end
