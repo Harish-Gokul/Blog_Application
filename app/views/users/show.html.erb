@@ -1,8 +1,8 @@
 <div class="edit_user_container">
   <h3>Welcome Back <span class="text-success"> <%= @user.username %></span></h3>
-
+  <% if current_user && @user.id == current_user.id %>
   <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-primary" %>
-
+<% end %>
   <h4>Listing all articles that you have created</h4>
 </div>
 

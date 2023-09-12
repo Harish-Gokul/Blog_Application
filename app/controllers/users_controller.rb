@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:show,:edit,:update]
   def index
     @users = User.paginate(page: params[:page],per_page: 5)
   end
   def show
-    @user = User.find(params[:id])
     @articles = @user.articles.paginate(page: params[:page],per_page: 5)
   end
 
@@ -13,11 +12,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     @user.update(paramsValue)
 
     if @user.save
@@ -30,16 +27,19 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(paramsValue)
-
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "New Account Created"
-      redirect_to articles_path
+      redirect_to user_path(@user)
     else
       render "new"
     end
   end
 
   private
+  def set_user
+    @user = User.find(params[:id])
+  end
   def paramsValue
     params.require(:user).permit(:username,:email,:password)
   end
