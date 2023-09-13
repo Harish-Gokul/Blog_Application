@@ -16,7 +16,7 @@
       </div>
       <div class="card-header center_div">
         <button class="btn btn-outline-primary"> <%= link_to "Show",article_path(element),{style: "text-decoration: none;color: inherit",class: "card-link"} %></button>
-        <% if current_user && current_user.id == element.user.id %>
+        <% if (current_user && current_user.id == element.user.id)||current_user.admin %>
         <button class="btn btn-outline-warning"> <%= link_to "Edit",edit_article_path(element),{style: "text-decoration: none;color: inherit",class: "card-link"} %></button>
         <button class="btn btn-outline-danger"> <%= link_to "Delete",article_path(element), {style: "text-decoration: none;color: inherit",class: "card-link",method: :delete } %></button>
 <% end %>

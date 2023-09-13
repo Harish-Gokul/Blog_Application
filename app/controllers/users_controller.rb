@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show,:edit,:update]
-  before_action :require_user, except: [:show,:index]
+  before_action :set_user, only: [:show,:edit,:update,:destroy]
+  before_action :require_user, only: [:edit,:update]
+  before_action :valid_user, only: [:edit,:update,:destroy]
   def index
     @users = User.paginate(page: params[:page],per_page: 5)
   end
@@ -13,10 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if @user.id != current_user.id
-      flash[:alert] = "Your are restricted to edit others profile"
-      redirect_to user_path(current_user)
-    end
+
   end
 
   def update
@@ -40,6 +38,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] =nil if @user == current_user
+    flash[:alert] = "user have been deleted successfully"
+    redirect_to root_path
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
@@ -54,4 +59,12 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def valid_user
+    if (@user.id != current_user.id)&& !current_user.admin?
+      flash[:alert] = "Your are restricted to edit others profile"
+      redirect_to user_path(current_user)
+    end
+  end
+
 end

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :get_article, only: [:show,:update,:edit,:destroy]
   before_action :require_user, except: [:show,:index]
+  before_action :require_same_user, only: [:edit,:update,:destroy]
   def show
   end
 
@@ -23,10 +24,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    if @article.user.id != current_user.id
-      flash[:alert] = "Sorry you cannot edit others article"
-      redirect_to user_path(current_user)
-    end
+
   end
 
   def update
@@ -40,6 +38,7 @@ class ArticlesController < ApplicationController
 
   def destroy
      @article.destroy
+     flash[:notice] = "Deleted an article"
      redirect_to articles_path
   end
 
@@ -51,6 +50,14 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title,:description)
   end
+
+  def require_same_user
+    if (@article.user.id != current_user.id)&& !current_user.admin?
+      flash[:alert] = "Sorry you cannot edit others article"
+      redirect_to user_path(current_user)
+    end
+  end
+
   
   def require_user
     if !logged_in?
@@ -58,4 +65,6 @@ class ArticlesController < ApplicationController
       redirect_to login_path
     end
   end
+
 end
+

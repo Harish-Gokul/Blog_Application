@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :articles, dependent: :delete_all
+  has_many :articles, dependent: :destroy
   has_secure_password
   VALID_EMAIL_REGEX= /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i
 
