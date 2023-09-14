@@ -21,6 +21,11 @@
     <%= form.text_area :description,{class: "form-control" } %>
     </div>
 
+    <div class="form-group">
+      <%= form.label :categoreis %>
+      <%= form.collection_select(:category_ids,Category.all,:id,:name,{prompt: "You can select multiple options"}, {multiple: true, class: "form-control"}) %>
+    </div>
+
     <div class="card-header">
       <div class="center_div">
       <%= form.submit class: "btn btn-outline-success" %>

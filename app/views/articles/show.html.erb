@@ -6,6 +6,7 @@
     <div class="card" style="width: 28rem;margin-top:10px ">
       <div class="card-header">
         <h5  style="font-weight: bolder;text-align: center">Description</h5>
+        <%= render "tags", element: @article %>
         <hr>
         <div class="center_div text-success" >
           <small >Created by <%= (link_to @article.user.username,user_path(@article.user.id)) if @article.user %></small>

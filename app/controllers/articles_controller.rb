@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    byebug
     if @article.update(article_params)
       flash[:notice]  = "Article has been edited successfully"
       redirect_to article_path
@@ -48,7 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title,:description)
+    params.require(:article).permit(:title,:description,:category_ids => [])
   end
 
   def require_same_user

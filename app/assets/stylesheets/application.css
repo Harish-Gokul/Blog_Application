@@ -91,7 +91,12 @@ body{
     background-color: lightblue;
     padding: 10px;
     border-radius: 15px;
+}
 
-
+.center_cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 

@@ -5,6 +5,16 @@
     <div class="card" style="width: 28rem;margin-top:10px ">
       <div class="card-header">
         <h5 class="card-title " style="font-weight: bolder;text-align: center"><%= link_to element.title,article_path(element) %></h5>
+
+
+        <% if !element.categories.empty? %>
+          <div class="center_div">
+            <% for category in element.categories %>
+              <%= link_to category.name, category_path(category.id),class: "badge badge-secondary" %>
+            <% end %>
+          </div>
+        <%end %>
+
         <hr>
         <div class="center_div" >
           <small >Created by  <%= (link_to element.user.username,user_path(element.user.id)) if element.user %></small>
