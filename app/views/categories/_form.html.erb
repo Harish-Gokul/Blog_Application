@@ -1,0 +1,16 @@
+<%= render "shared/error" , obj: @category %>
+<div class="user_form">
+  <h3><%= @category.new_record? ? "Create category": "Edit category" %> </h3>
+  <hr>
+  <%= form_with(model: @category,local: true) do |form| %>
+    <div class="form-group row">
+      <%= form.label :name,class:  "col-sm-2 col-form-label"%>
+      <div class="col-sm-10">
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+
+    <%= form.submit class: "btn btn-success"%>
+
+  <%end %>
+</div>

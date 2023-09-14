@@ -1,0 +1,39 @@
+
+<div class="center_div" style="margin: 2%">
+<h4 > Listing All categories</h4>
+<% if loggedInAsAdmin? %>
+  <%= link_to "Create category",new_category_path, class: "btn btn-success"  %>
+  <%end %>
+</div>
+
+<div class="paginate">
+  <div class="flickr_pagination" >
+    <%= will_paginate @users %>
+  </div>
+</div>
+
+
+<div class="categories_table">
+  <%= @categories.any? ? "":"No Categories found" %>
+  <% for element in @categories %>
+    <div class="card" style="width: 28rem;margin-top:10px ">
+      <div class="card-header">
+        <h5 class="card-title " style="font-weight: bolder;text-align: center"><%= link_to element.name,category_path(element) %></h5>
+
+      </div>
+      <div class="card-header center_div">
+        <button class="btn btn-outline-primary"> <%= link_to "Show",category_path(element),{style: "text-decoration: none;color: inherit",class: "card-link"} %></button>
+        <% if loggedInAsAdmin? %>
+          <button class="btn btn-outline-warning"> <%= link_to "Edit",edit_category_path(element),{style: "text-decoration: none;color: inherit",class: "card-link"} %></button>
+        <% end %>
+        <hr>
+        <div class="card-footer text-muted">
+          Created <%= time_ago_in_words(element.created_at) %>
+        </div>
+
+      </div>
+    </div>
+
+  <%end %>
+
+</div>
