@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :get_article, only: [:show,:update,:edit,:destroy]
+  before_action :get_article, only: [:show,:update,:edit,:destroy,:delete_photo]
   before_action :require_user, except: [:show,:index]
   before_action :require_same_user, only: [:edit,:update,:destroy]
   def show
@@ -28,7 +28,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    byebug
     if @article.update(article_params)
       flash[:notice]  = "Article has been edited successfully"
       redirect_to article_path
@@ -43,13 +42,20 @@ class ArticlesController < ApplicationController
      redirect_to articles_path
   end
 
+  def delete_photo
+    if @article.main_image.attached?
+      @article.main_image.purge
+      redirect_to edit_article_path(@article)
+    end
+  end
+
   private
   def get_article
     @article = Article.find(params[:id])
   end
 
   def article_params
-    params.require(:article).permit(:title,:description,:category_ids => [])
+    params.require(:article).permit(:title,:description,{:category_ids => []},:main_image)
   end
 
   def require_same_user

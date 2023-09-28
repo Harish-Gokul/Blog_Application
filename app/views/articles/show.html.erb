@@ -6,7 +6,10 @@
     <div class="card" style="width: 28rem;margin-top:10px ">
       <div class="card-header">
         <h5  style="font-weight: bolder;text-align: center">Description</h5>
-        <%= render "tags", element: @article %>
+        <%= render "shared/tags", obj: @article.categories %>
+        <% if @article.main_image.attached? %>
+            <%= image_tag @article.main_image.variant(resize_to_limit: [150, nil]) %>
+          <% end %>
         <hr>
         <div class="center_div text-success" >
           <small >Created by <%= (link_to @article.user.username,user_path(@article.user.id)) if @article.user %></small>

@@ -26,6 +26,15 @@
       <%= form.collection_select(:category_ids,Category.all,:id,:name,{prompt: "You can select multiple options"}, {multiple: true, class: "form-control"}) %>
     </div>
 
+    <% if @article.main_image.attached? %>
+        <%= image_tag @article.main_image %>
+        <h4>Old Image  - <%= @article.main_image.blob.filename %>  <%= link_to "Remove image", delete_photo_article_path(@article), method: :delete ,class: "btn btn-danger"%></h4>
+
+      <% end%>
+
+    <%= form.label :main_image %>
+    <%= form.file_field :main_image %>
+
     <div class="card-header">
       <div class="center_div">
       <%= form.submit class: "btn btn-outline-success" %>

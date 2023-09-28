@@ -7,13 +7,15 @@
         <h5 class="card-title " style="font-weight: bolder;text-align: center"><%= link_to element.title,article_path(element) %></h5>
 
 
-        <% if !element.categories.empty? %>
-          <div class="center_div">
-            <% for category in element.categories %>
-              <%= link_to category.name, category_path(category.id),class: "badge badge-secondary" %>
-            <% end %>
-          </div>
-        <%end %>
+        <%# if !element.categories.empty? %>
+<!--          <div class="center_div">-->
+            <%# for category in element.categories %>
+              <%#= link_to category.name, category_path(category.id),class: "badge badge-secondary" %>
+            <%# end %>
+<!--          </div>-->
+        <%#end %>
+        <%#byebug %>
+        <%= render "shared/tags",obj: element.categories %>
 
         <hr>
         <div class="center_div" >

@@ -8,17 +8,18 @@
 
 <div class="paginate">
   <div class="flickr_pagination" >
-    <%= will_paginate @users %>
+    <%= will_paginate @categories %>
   </div>
 </div>
 
 
-<div class="categories_table">
+<div class="categories_table center_div">
   <%= @categories.any? ? "":"No Categories found" %>
   <% for element in @categories %>
     <div class="card" style="width: 28rem;margin-top:10px ">
       <div class="card-header">
         <h5 class="card-title " style="font-weight: bolder;text-align: center"><%= link_to element.name,category_path(element) %></h5>
+        <p><%= element.articles.count %> articles</p>
 
       </div>
       <div class="card-header center_div">

@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 4.0'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rails-controller-testing'
 
 end
+gem 'active_storage_validations'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

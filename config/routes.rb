@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root "pages#home"
   get "/about", to:"pages#about"
-  resources :articles
+  resources :articles do
+    member do
+      delete :delete_photo
+    end
+  end
   resources :users, except: [:new]
   resources :categories, except: [:destroy]
   get "/signup", to: "users#new"

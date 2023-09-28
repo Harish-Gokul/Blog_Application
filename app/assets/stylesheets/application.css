@@ -93,10 +93,3 @@ body{
     border-radius: 15px;
 }
 
-.center_cards{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
